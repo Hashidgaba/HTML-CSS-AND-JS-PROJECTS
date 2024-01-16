@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>calculator</title>
+  <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+  <div class="box"> </div>
+  <div class="calculator">
+    <div class="screen">
+      <h2>calculator</h2>
+      <input type="text" id="display" readonly>
+    </div>
+    <div class="keys">
+      <button onclick="clearDisplay()" class="row-1">AC</button>
+      <button  class="row-1" ><=</button>
+      <button onclick="appendToDisplay('%')" class="row-1">%</button>
+      <button onclick="appendToDisplay('/')" class="row-1 yellow">/</button>
+      <button onclick="appendToDisplay('7')" class="row-2">7</button>
+      <button onclick="appendToDisplay('8')" class="row-2">8</button>
+      <button onclick="appendToDisplay('9')" class="row-2">9</button>
+      <button onclick="appendToDisplay('*')" class="row-2 yellow">*</button>
+      <button onclick="appendToDisplay('4')" class="row-3">4</button>
+      <button onclick="appendToDisplay('5')" class="row-3">5</button>
+      <button onclick="appendToDisplay('6')" class="row-3">6</button>
+      <button onclick="appendToDisplay('-')" class="row-3 yellow">-</button>
+      <button onclick="appendToDisplay('1')"class= "row-4" >1</button>
+      <button onclick="appendToDisplay('2')" class= "row-4">2</button>
+      <button onclick="appendToDisplay('3')" class= "row-4">3</button>
+      <button onclick="appendToDisplay('+')" class="row-4 yellow">+</button>
+      <button onclick="appendToDisplay('0')" class="row-5">0</button>
+      <button onclick="appendToDisplay('00')" class="row-5">00</button>
+      <button onclick="appendToDisplay('.')" class="row-5">.</button>
+      <button onclick="calculateResult()" class="row-5">=</button>
+      
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

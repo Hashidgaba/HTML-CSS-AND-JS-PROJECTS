@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
+body {
+    filter: drop-shadow(2px 2px 0px black);
+    background: linear-gradient(aqua, blue, red);
+    background-clip: text;
+    animation: animated 0.5s linear infinite;
+    transition: all 0.3s ease;
+
+}
+
+
+.calculator {
+    margin: 12rem auto;
+    width: 26rem;
+    padding: 10px;
+    border-radius: 10px;
+    /* background-color: rgba(128, 128, 128, 0.39); */
+    background-color: transparent;
+    box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.397), 2px 3px 10px rgba(0, 0, 0, 0.301), 2px 3px 10px rgba(0, 0, 0, 0.281);
+}
+
+.screen {
+    background-color: rgba(128, 128, 128, 0.527);
+    padding: 14px;
+
+}
+
+.screen h2 {
+    color: black;
+    font-style: italic;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-top: 10px;
+    background-color: gray;
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+
+}
+
+
+.keys {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 3px;
+    margin: 10px 0px
+}
+
+button {
+    padding: 18px;
+    clip-path: circle(25% at 50% 50%);
+    font-size: 1.9rem;
+    transition: all 0.128s ease-in;
+    align-items: center;
+    /* padding: 10px;
+    border: none;
+    cursor: pointer; */
+
+}
+
+.row-1,
+.row-2,
+.row-3,
+.row-4,
+.row-5 {
+    background-color: rgba(128, 128, 128, 0.603);
+    clip-path: circle(25% at 50% 50%);
+
+}
+
+.yellow {
+    background-color: rgba(255, 255, 0, 0.637);
+}
+
+button:hover {
+    background-color: rgba(128, 128, 128, 0.281);
+}
+
+.yellow:hover {
+    background-color: rgba(255, 255, 0, 0.541);
+}

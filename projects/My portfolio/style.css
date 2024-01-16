@@ -1,0 +1,126 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*header section*/
+
+.header {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    top: 0px;
+    border: 2px solid red;
+    padding: 10px;
+    width: 25vw;
+    background-color: rgb(10, 10, 17);
+
+}
+
+.header .header-1 {
+    flex-direction: column;
+    gap: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+}
+
+.header .header-1 img {
+    clip-path: circle(48% at 50% 50%);
+    object-fit: cover;
+    margin: auto;
+    display: block;
+}
+
+.header .header-1 h2 {
+    font-weight: bolder;
+    text-align: center;
+    margin: 9px;
+    font-size: 1.6rem;
+    transition: all 0.4s linear;
+
+}
+
+.header .icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.header .icon i {
+    padding: 9px;
+    font-size: 1.4rem;
+    background-color: rgb(26, 24, 24);
+    color: white;
+    border-radius: 100%;
+    transition: all 0.3s linear;
+}
+.header .icon i:hover{
+    background-color: rgba(0, 255, 255, 0.74);
+
+}
+
+
+.navbar {
+    margin-top: 40px;
+    padding: 10px;
+
+}
+
+.navbar ul {
+    left: 10px;
+}
+
+.navbar ul li {
+    margin: 25px 0px;
+    list-style: none;
+}
+
+.navbar ul li i {
+    margin: 0px 5px;
+    color: rgba(0, 255, 255, 0.541)
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    margin: 5px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease-in;
+}
+
+.navbar ul li .active {
+    color: aqua;
+    text-decoration: overline;
+
+}
+
+.navbar ul li a:hover {
+    color: aqua;
+    text-decoration: overline;
+}
+footer{
+    color:white;
+    font-weight: 300;
+
+}
+footer p{
+    text-align: center;
+}
+footer a{
+    color:white;
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    font-style: italic;
+
+}
+footer a:hover{
+    color: aqua;
+    text-decoration: underline;
+    cursor: pointer;
+}
+

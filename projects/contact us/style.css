@@ -1,0 +1,114 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background: conic-gradient(red, blue, aqua, purple, whitesmoke, rgb(59, 26, 26), gray, lightgray, rgba(0, 0, 0, 0.425));
+    background-clip: text;
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: 3s linear 1s infinite alternate animate;
+
+}
+
+@keyframes animate {
+    from {
+        background-position: 0%;
+    }
+
+    to {
+        background-position: 100%;
+
+    }
+
+
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 140px;
+    padding: 30px;
+    height: 500px;
+
+}
+
+
+.right-1 img {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+}
+
+.left-1 {
+    background-color: transparent;
+    box-shadow: 3px 3pxz 3px black;
+}
+
+.left-1 .form-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    gap: 10px;
+    height: 300px;
+    padding: 50px;
+    background-color: whitesmoke;
+    border-radius: 10px;
+
+}
+
+.left-1 .form-1 h2 {
+    color: black;
+    font-size: 1.9rem;
+    filter: drop-shadow(4px 3px 3px purple);
+}
+
+.left-1 .form-1 .box-1 {
+    /* border:2px solid red; */
+    padding: 5px;
+    font-size: 0.9rem;
+    width: 350px;
+}
+
+.left-1 .form-1 .box-1 input,
+textarea {
+    padding: 8px;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 10px;
+    border-color: transparent;
+    background-color: transparent;
+    box-shadow: inset 6px 6px 4px silver;
+
+}
+
+::placeholder {
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    filter: drop-shadow(2px 3px 3px black);
+
+}
+
+.btn input  {
+    padding: 6px;
+    border-radius: 5px;
+    border-color: inherit;
+    background-color: lightgray;
+    transition: all 0.2s linear;
+    box-shadow:  2px 2px 3px gray;
+
+}
+
+.btn input:hover {
+    background-color: rgba(128, 128, 128, 0.616);
+}
