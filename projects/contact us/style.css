@@ -39,16 +39,9 @@ body {
 
 }
 
-
-.right-1 img {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-
-}
-
 .left-1 {
     background-color: transparent;
+    backdrop-filter: blur(10%);
     box-shadow: 3px 3pxz 3px black;
 }
 
@@ -112,3 +105,4 @@ textarea {
 .btn input:hover {
     background-color: rgba(128, 128, 128, 0.616);
 }
+.span

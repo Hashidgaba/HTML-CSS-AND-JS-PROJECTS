@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>poppup page</title>
+</head>
+<body>
+        <button class="btn"onclick="openPopup()">Button</button>
+        <div class="popup-cont" id="poppup">
+           <img src="https://cdn-icons-png.freepik.com/512/5610/5610944.png" width="80px">
+            <h2>Thank you!</h2>
+            <span>your details has been successfully submitted!</span>
+            <button class="btn-1" onclick="closePopup()">ok!</button>
+
+        </div>
+
+        <script>
+         let popup = document.getElementById("poppup");
+         function openPopup(){
+            popup.classList.add("open-popup")
+         }
+
+         function closePopup(){
+            popup.classList.remove("open-popup")
+         }
+
+        </script>
+</body>
+</html>
