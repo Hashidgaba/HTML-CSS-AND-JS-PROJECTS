@@ -3,17 +3,15 @@
     margin: 0;
 }
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     display: none;
-}
+} */
 
 
 body {
     filter: drop-shadow(2px 2px 0px black);
-    background: linear-gradient(aqua, blue, red);
+    background-color: gray;
     background-clip: text;
-    animation: animated 0.5s linear infinite;
-    transition: all 0.3s ease;
 
 }
 
@@ -23,8 +21,7 @@ body {
     width: 26rem;
     padding: 10px;
     border-radius: 10px;
-    /* background-color: rgba(128, 128, 128, 0.39); */
-    background-color: transparent;
+    background-color: rgba(128, 128, 128, 0.39);
     box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.397), 2px 3px 10px rgba(0, 0, 0, 0.301), 2px 3px 10px rgba(0, 0, 0, 0.281);
 }
 
@@ -65,12 +62,11 @@ input[type="text"] {
 button {
     padding: 18px;
     clip-path: circle(25% at 50% 50%);
-    font-size: 1.9rem;
-    transition: all 0.128s ease-in;
+    font-size: 1.5rem;
+    transition: all 0.13s ease-in;
     align-items: center;
-    /* padding: 10px;
-    border: none;
-    cursor: pointer; */
+    
+    
 
 }
 
