@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #6366F1;
+            text-align: center;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            flex-wrap: wrap; /* Makes it responsive on small screens */
+        }
+
+        .stats div {
+            background-color: #6366F1;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            flex: 1 1 30%; /* Makes the stats items flexible */
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .chart-container {
+            position: relative;
+            margin: auto;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        canvas {
+            display: block;
+            width: 100%;
+            height: auto; /* Makes the graph adapt to screen size */
+        }
+
+        #totalVotes {
+            font-size: 24px;
+        }
+
+        /* Responsive Design for Small Screens */
+        @media screen and (max-width: 768px) {
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats div {
+                flex: 1 1 100%; /* Stacks the stats vertically */
+                margin-bottom: 15px;
+            }
+
+            .chart-container {
+                width: 100%;
+                max-width: 100%; /* Full width on mobile */
+            }
+
+            canvas {
+                height: 300px; /* Reduce chart height for smaller screens */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <!-- Display total stats -->
+        <div class="stats">
+            <div>
+                <h3>Total Users</h3>
+                <p id="totalUsers">0</p>
+            </div>
+            <div>
+                <h3>Total Votes</h3>
+                <p id="totalVotes">0</p>
+            </div>
+            <div>
+                <h3>Active Polls</h3>
+                <p id="activePolls">0</p>
+            </div>
+        </div>
+
+        <!-- Display candidate results -->
+        <h3>Voting Results</h3>
+        <div class="chart-container">
+            <canvas id="voteChart"></canvas>
+        </div>
+    </div>
+
+    <script>
+        // Example data structure for voting
+        const candidatesData = {
+            Sports: ["Bulbul shah", "Faizan Haroon"],
+            Public: ["Hurr Abbas", "Nida yasir"],
+            Music: ["Sheraz Arif", "Rizwan Ahmed"],
+            Science: ["Hashid gaba", "Jibran"],
+            Literature: ["Abdul Moiz", "Yasir Faizan"],
+            Hackathone: ["Farzeen Ali", "Mansoor Ahmed"],
+        };
+
+        // Fetching the voting data from localStorage
+        const votedDetails = JSON.parse(localStorage.getItem('votedDetails')) || [];
+
+        // Function to update stats on the admin panel
+        function updateStats() {
+            const totalUsers = new Set(votedDetails.map(vote => vote.username)).size;
+            const totalVotes = votedDetails.length;
+            const activePolls = Object.keys(candidatesData).length;
+
+            // Update stats in the UI
+            document.getElementById('totalUsers').textContent = totalUsers;
+            document.getElementById('totalVotes').textContent = totalVotes;
+            document.getElementById('activePolls').textContent = activePolls;
+        }
+
+        // Function to calculate and update voting results chart
+        function updateVotingResults() {
+            const votes = [];
+            const labels = [];
+
+            // Count votes for each candidate
+            Object.keys(candidatesData).forEach(society => {
+                candidatesData[society].forEach(candidate => {
+                    const candidateVotes = votedDetails.filter(vote => vote.candidate === candidate && vote.society === society).length;
+                    votes.push(candidateVotes);
+                    labels.push(`${society} - ${candidate}`);
+                });
+            });
+
+            // Update chart data
+            voteChart.data.labels = labels;
+            voteChart.data.datasets[0].data = votes;
+            voteChart.update();
+        }
+
+        // Initialize Chart.js chart for displaying voting results
+        const ctx = document.getElementById('voteChart').getContext('2d');
+        const voteChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [], // Labels will be set dynamically
+                datasets: [{
+                    label: 'Votes',
+                    data: [], // Votes will be set dynamically
+                    backgroundColor: '#6366F1',
+                    borderColor: '#4e52c6',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, // Allows flexible aspect ratio for better responsiveness
+                scales: {
+                    x: {
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            font: {
+                                size: 14
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Update stats and chart periodically
+        function updateDashboard() {
+            updateStats();
+            updateVotingResults();
+        }
+
+        // Call the function every 3 seconds to update the dashboard
+        setInterval(updateDashboard, 3000);
+
+        // Initial load of stats and chart
+        updateDashboard();
+    </script>
+
+</body>
+
+</html>

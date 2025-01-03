@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <title>MH-Voting</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="HOME">
+        <div style="overflow: hidden;" class="header">
+
+            <header class="header-content">
+                <div class="logo">
+                    <img src="Photos/logo.jpg" alt="logoImage" class="logo-icon" />
+                </div>
+                <!-- Hamburger Icon -->
+                    <i class="fa-solid fa-bars hamburger"></i>
+            
+                <!-- Navigation Links -->
+                <nav class="nav" id="navMenu">
+                    <img src="Photos/logo.jpg" alt="logoImage" class="nav-logo-icon" />
+                    <a href="#" class="nav-link">Home</a>
+                    <a href="/vote Now/votenow.html" class="nav-link vote adminHide">Vote Now</a>
+                    <a href="/Admin Panel/admin.html" class="nav-link admin">Dashboard</a>
+                    <a href="/FeedBack Form/feedback.html" class="nav-link adminHide">Feedback</a>
+                    <a href="/helpSupport/help.html" class="nav-link adminHide">Help and Support</a>
+                    <a href="#"  class="nav-link admin">Settings</a>
+                    <a href="#" class="nav-link admin " id="adminLogout" onclick=logout()>logout</a>
+                </nav>
+
+                <div id="profileButtonContainer">
+                    <button class="contact-button" id="loginButton">Login</button>
+                    <i style="display: none;" onclick="showProfile()" id="profile" class="fa-regular fa-user"></i>
+                </div>
+            </header>
+
+        </div>
+
+        <div class="content" style="overflow: hidden;">
+            <section style="overflow: hidden;" class="main-section">
+                <div class="content-left hide">
+                    <p class="section-label">Your Voice. Your Vote</p>
+                    <h1 class="section-title">Your vote matters - and so does your experience.</h1>
+                    <p class="section-description">
+                        Welcome to MH Voting. The trusted platform for secure and seamless online voting. Our mission is to make voting simple, accessible, and hassle-free, so you can cast your vote anytime, anywhere, with confidence. Whether you're participating in elections,
+                        polls, or surveys, we prioritize security and ease of use to ensure your voice is heard. Join us today and be part of the future of voting.
+                    </p>
+                    <div class="button-group">
+                        <a href="/vote Now/votenow.html" style="display: none;" class="contact-button vote" id="voteNow">Vote
+                            Now</a>
+                        <a class="contact-button" id="register">Register</a>
+                        <a href="helpSupport/help.html" class="contact-button contactUs" id="tower">contact us</a>
+                        <a style="display: none;" href="Admin Panel/admin.html" class="contact-button Dashboard" id="tower">Dashboard</a>
+                    </div>
+                </div>
+                <div class="content-mid">
+                    <div class="remove-cont">
+                        <i style="display: none;" onclick=removeProfile() id="remove" class="fa-solid fas fa-arrow-right "></i>
+                    </div>
+                    <div class="userdetail-cont">
+                        <i style="margin-bottom: 10px;" class="fa-regular fa-user"></i>
+                        <p style="text-transform: capitalize; font-size: 1.5rem; font-weight:500" class="profileName">
+                        </p>
+                        </p>
+                        <p style="margin: 4px 0px;" class="username"></p>
+                        <p class="useremail"></p>
+                        <button style="margin: 15px auto;" class="contact-button">Edit profile</button>
+                    </div>
+                    <div class="userdetail-links-cont" style="padding: 5px; display: flex; flex-direction: column;">
+                        <!-- settings -->
+                        <div class="userdetail-link" style="display: flex; justify-content: space-between; align-items:center; margin: 12px 0px;">
+                            <div style="display: flex;align-items:center; justify-content: center;" class="left">
+                                <i style="font-size: 1rem; margin-right: 5px;" class="fa-solid fa-bars"></i>
+                                <p style="margin: 0 auto;">settings</p>
+                            </div>
+                            <div class="right"><i style="font-size: 0.8rem;" class="fa-solid fa-greater-than"></i></div>
+                        </div>
+                        <!-- voter list -->
+                        <div class="userdetail-link voterList" style="display: flex; justify-content: space-between; align-items:center; margin: 8px 0px;">
+                            <div style="display: flex; align-items:center; justify-content: center;" class="left">
+                                <i style="font-size: 1rem;" class="fa-solid fa-check-to-slot"></i>
+                                <p style="margin: 0 auto;">Voter List</p>
+                            </div>
+                            <div class="right">
+                                <i style="font-size: 0.8rem;" class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </div>
+                        <!-- Container for displaying the voting details -->
+                        <div id="voterListContainer" style="margin-top: 10px; padding: 5px;">
+                            <!-- Voted societies will be listed here -->
+                        </div>
+                        <!-- change pass -->
+                        <div class="userdetail-link" style="display: flex;justify-content: space-between; align-items:center; margin: 8px 0px;">
+                            <div style="display: flex;align-items:center; justify-content: center;" class="left">
+                                <i style="font-size: 1rem;display: flex;align-items:center; justify-content: center;" class="fa-solid fa-key"></i>
+                                <p>change password</p>
+                            </div>
+                            <div class="right"><i style="font-size: 0.8rem;" class="fa-solid fa-greater-than"></i></div>
+                        </div>
+
+                    </div>
+                    <div style="padding: 5px; display: flex; flex-direction: column;" class="userdetail-bottom-link">
+                        
+                        <div class="userdetail-link" style="display: flex; justify-content: space-between; align-items:center; margin: 8px 0px;">
+                            <div style="display: flex;align-items:center; justify-content: center;" class="left">
+                                <i style="display: none; text-align: left; font-size: 1rem;" id="logoutButton" onclick=logout() class="fa-solid fa-right-from-bracket"></i>
+                                <p>log out</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="content-right hide">
+
+                    <div class="image-container">
+                        <img src="Photos/choice-02.jpg" alt="sectionImage" class="section-image" />
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+        <div style="overflow: hidden;" class="company-container hide">
+            <h2 class="company-title">Trusted by the best</h2>
+            <div class="company-grid">
+
+                <div class="company-logo">
+                    <img src="Photos/google.png" class="svg-img" />
+                    <span class="logo-txt">Google</span>
+                </div>
+
+                <div class="company-logo">
+                    <img src="Photos/microsoft.png" class="svg-img" />
+                    <span class="logo-txt">Microsoft</span>
+                </div>
+
+                <div class="company-logo">
+                    <img src="Photos/linkden.webp" class="svg-img" />
+                    <span class="logo-txt">Linkedin</span>
+                </div>
+
+                <div class="company-logo">
+                    <img src="Photos/vector.png" class="svg-img" />
+                    <span class="logo-txt">VectorEdu</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div style="overflow: hidden;" class="feature-container hide">
+            <div class="feature-content">
+                <div class="main-info">
+                    <h2 class="main-title">
+                        Our competitive advantage
+                    </h2>
+                    <p class="main-description">
+                        This is a section of some simple filler text, also known as placeholder text. It shares some characteristics of real written text but is random or otherwise generated.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+
+                    <!-- card 1 -->
+                    <div style="background-color: #6366F1;" class="feature-card">
+                        <div class="icon-container">
+                            <img class="feature-svg scale" src="Photos/learning.jpg" />
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-title">
+                                Personalized Learning
+                            </div>
+                            <div class="feature-description">
+                                Offer tailored learning experiences through AI and machine learning to cater to individual student needs.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div style="background-color: #333333;" class="feature-card">
+                        <div class="icon-container">
+                            <img class="feature-svg scale" src="Photos/affordable.jpg" />
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-title">
+                                Affordability
+                            </div>
+                            <div class="feature-description">
+                                Provide high-quality education at an affordable price point, making it accessible to a broader audience.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div style="background-color: #6366F1;" class="feature-card">
+                        <div class="icon-container">
+                            <img class="feature-svg scale" src="Photos/partnership.jpg" />
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-title">
+                                Industry Partnerships
+                            </div>
+                            <div class="feature-description">
+                                Collaborate with well-known companies and institutions to offer accredited courses and certifications, adding credibility to your offerings.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div style="background-color: #333333;" class="feature-card">
+                        <div class="icon-container">
+                            <img class="feature-svg scale" src="Photos/innovative.jpg" />
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-title">
+                                Innovative Technology
+                            </div>
+                            <div class="feature-description">
+                                Utilize cutting-edge technology, such as augmented reality or virtual reality, to create immersive learning experiences.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 5 -->
+                    <div style="background-color: #6366F1;" class="feature-card">
+                        <div class="icon-container">
+                            <img class="feature-svg scale" src="Photos/responsive.jpg" />
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-title">
+                                Responsive Support
+                            </div>
+                            <div class="feature-description">
+                                Provide exceptional customer support and assistance to students and educators.
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 6 -->
+                    <div style="background-color: #333333;" class="feature-card">
+                        <div class="icon-container">
+                            <img class="feature-svg scale" src="Photos/analytics.jpg" />
+                        </div>
+                        <div class="feature-info">
+                            <div class="feature-title">
+                                Analytics and Insights
+                            </div>
+                            <div class="feature-description">
+                                Offer detailed progress tracking and analytics to help students and teachers monitor performance and make data-driven decisions.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div style="overflow: hidden;" class="newsletter-container hide">
+            <div class="newsletter-content">
+                <!-- left part  -->
+                <div class="news-left">
+                    <img src="Photos/rectagle.jpg" loading="lazy" alt="news-img" />
+                </div>
+                <!-- right part -->
+                <div class="news-right">
+
+                    <div class="news-info">
+                        <h2 class="news-title">Get the latest updates</h2>
+
+                        <p class="news-desc">Sign up for our newsletter</p>
+                    </div>
+
+                    <form class="news-form">
+
+                        <input class="news-email" placeholder="Email" />
+                        <button class="news-send-button">
+                            Send
+                        </button>
+
+                    </form>
+
+                    <div class="privacy-policy">
+                        By signing up to our newsletter you agree to our
+                        <a class="news-link">
+                            Terms of Service
+                        </a> and
+                        <a class="news-link">
+                            Privacy policy
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div style="overflow: hidden;" class="footer-container hide ">
+            <footer class="footer ">
+
+                <div class="footer-top">
+
+                    <div class="comp-logo">
+                        <img style="width: 150px; height: 150px;" src="Photos/logo.jpg" alt="logoImage" class="logo-icon" />
+                    </div>
+
+                    <p class="filler-text">Seamless Learning for Brighter Futures.</p>
+                    <div class="social">
+                        <a class="social-link" href="#">
+                            <img src="Photos/google.png" class="social-icon" />
+                        </a>
+                        <a class="social-link">
+                            <img src="Photos/linkden.webp" class="social-icon" />
+                        </a>
+                        <a class="social-link">
+                            <img src="Photos/microsoft.png" class="social-icon" />
+                        </a>
+                        <a class="social-link">
+                            <img src="Photos/vector.png" class="social-icon" />
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-grid">
+                    <!-- column 1 -->
+                    <div class="footer-grid-column">
+                        <div class="footer-grid-heading">
+                            Products
+                        </div>
+                        <ul class="footer-links-list">
+                            <li>
+                                <a href="#overview" class="footer-link">Overview</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Solutions</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Pricing</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Customers</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- column 2 -->
+                    <div class="footer-grid-column">
+                        <div class="footer-grid-heading">
+                            Company
+                        </div>
+                        <ul class="footer-links-list">
+                            <li>
+                                <a href="#overview" class="footer-link">About</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Investor Relations</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Jobs</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Press</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- column 3 -->
+                    <div class="footer-grid-column">
+                        <div class="footer-grid-heading">
+                            Support
+                        </div>
+                        <ul class="footer-links-list">
+                            <li>
+                                <a href="#overview" class="footer-link">Contact</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Documentation</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Chat</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- column 4 -->
+                    <div class="footer-grid-column">
+                        <div class="footer-grid-heading">
+                            Legal
+                        </div>
+                        <ul class="footer-links-list">
+                            <li>
+                                <a href="#overview" class="footer-link">Terms of Service</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="#overview" class="footer-link">Cookie Settings</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </footer>
+            <div class="footer-copyright">
+                © 2024 - MH Voting. All rights reserved.
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
