@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>login page</title>
+</head>
+
+<body>
+    <div class="container" id="cont-remover">
+        <div class="form-content">
+            <h2> Login Page </h2>
+            <div class="form">
+                <div class="input-box">
+                    <input type="email" placeholder="Email id" title="Email" spellcheck="true">
+                    <input type="password" placeholder="password" title="password">
+                </div>
+                <div class="check">
+                    <a href="#">Forgot password</a>
+
+                </div>
+                <div class="button">
+                    <button onclick="openPopup()">Login</button>
+
+                </div>
+                <span class="register">dont have an account? <a href="#">Register</a></span>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="popup-cont" id="poppup">
+        <img src="https://cdn-icons-png.freepik.com/512/5610/5610944.png" width="80px">
+         <h2>Thank you!</h2>
+         <span>your details has been successfully submitted!</span>
+         <button class="btn-1" onclick="closePopup()">ok!</button>
+     </div>
+
+     <script>
+          let popup = document.getElementById("poppup");
+          let remover = document.getElementById("cont-remover");
+
+         function openPopup(){
+            popup.classList.add("open-popup");
+            remover.classList.add("remover");      
+
+         }
+
+         function closePopup(){
+            popup.classList.remove("open-popup");
+            remover.classList.remove("remover"); 
+
+         }
+
+     </script>
+
+</body>
+
+</html>
